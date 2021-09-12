@@ -81,7 +81,11 @@ export default {
         if (!valid) return;
         const { data: res } = await this.$http.post('login', this.loginForm);
         if (res.meta.status !== 200) {
-          return this.$message.error('登录失败！');
+          return this.$message({
+            showClose: true,
+            message: '登录失败！',
+            type: 'error',
+          });
         }
         this.$message({
           message: '登录成功！',
